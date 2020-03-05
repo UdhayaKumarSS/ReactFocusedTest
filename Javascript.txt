@@ -1,0 +1,49 @@
+1). My favorite feature is Spread Operator because it can do lots of functionalities like
+       - copying an array or object
+       - concatenating arrays or merging objects
+       - spreading array elements or object together with an individual element or object
+
+2).  My first interesting javascript feature is "spread operator" which can combine the two objects. 
+     if any key matches from the first object it will just override the value from the second object.
+   
+      example: obj1 = {pen: 'black', pencil: 'white'}  obj2 = { pencil: 'red' }
+              obj = {...obj1, obj2} Ans: {pen: 'black', pencil: 'red' }
+
+
+      And one more interesting feature is "optional chaining" it makes my code more readable
+        (it has less browser compatibility but we can convert using babel(@babel/plugin-proposal-optional-chaining))
+
+       example: obj = {
+                 name: XXXX
+                 Adddress: {
+                    state: yyyyy
+                    pincode: 000000000  
+                 }  
+                 }
+
+        normal javascript:  if(obj && obj.Adddress && obj.pincode)
+        optional changing:  if(obj?.Address?.pincode)          
+
+
+
+3). Yes, there is difference between regular function syntax and the shorter arrow function syntax
+     regular function syntax:
+        function functionName () {
+       }
+     Arrow Function    
+     const functionName = () => {
+     }
+
+    I usually use a regular function when compared to the arrow functions. 
+    because of the arrow function "this" to be bound to the context. I will take more memory in the call stack.
+
+    Arrow functions shine best with anything that requires "this" to be bound to the context, and not the function itself.
+
+4.) Basically ++i returns the value after it is incremented, while ++i return the value before it is incremented
+      if foo = 0
+    "myFunctionCall(++foo)" when this function will execute it will pass 1 as parameter
+    "myFunctionCall(foo++)" when this function will execute it will pass 0 as parameter.
+
+
+5). A function is a way to modularize up some code so that it can be reused, while a class is a “blueprint” for an object, an entity that contains related code and data
+    (methods and state).

@@ -1,0 +1,36 @@
+1). CSS Specificity is the set of the rules applied to CSS selectors in order to determine which style is applied to an element.
+      Specificity order
+      1. Inline styles
+      2. IDs
+      3. Classes, attributes and pseudo-classes
+      4. Elements and pseudo-elements
+
+
+2). The !important property in CSS means that all subsequent rules on an element are to be ignored.
+    !important property increases its priority. however,
+    it is bad practice and should be avoided because it makes debugging more difficult by breaking the natural cascading in your stylesheets.
+
+
+3). I preferred flexbox because it has more popular nowadays.
+    
+    - The parent element should have display: flex or inline-flex to enable a flex context for all its direct children.
+    - flex-direction
+        this defining the direction flex items are placed in the flex container(row | row-reverse | column | column-reverse).
+    - flex-wrap
+       By default, flex items will all try to fit onto one line. 
+       You can change that and allow the items to wrap as needed with this property(nowrap | wrap | wrap- reverse)
+    - justify-content
+     This defines the alignment along the main axis
+      (flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe)
+  it will provide more benefits when compare  other layouts
+
+
+4).  I will suggest to try to avoid it as it just doesn’t feel right 
+     because the negative margins and paddings is that they’re don’t exist in real life
+
+
+5). when the vertical margins of two elements are touching, only the margin of the element with the largest margin value will be honored, while the margin of the element with the smaller margin value will be collapsed to zero
+      This rule is cancelled for:
+       - Floated elements
+       - Absolutely positioned elements
+       - Inline-block elements 

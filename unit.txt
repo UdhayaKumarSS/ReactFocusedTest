@@ -1,0 +1,13 @@
+1). I have used jest with Enzyme
+    Jest acts as a test runner, assertion library, and mocking library.
+    Enzyme is a JavaScript Testing utility for React that makes 
+       it easier to assert, manipulate, and traverse your React Components’ output.
+
+2). I have been using Enzyme for few years. I didn't see any pitfalls associated with this technology. 
+    it have good support as well
+
+
+3). const wrapper = mount(<MyComponent includedProp="Success!" excludedProp="I'm not included" />);
+    expect(wrapper.props().includedProp).to.equal('Success!');      
+
+ 
