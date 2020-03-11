@@ -1,9 +1,74 @@
-Subject:
-A subject is nothing but an Observable but a special one which allows values to be multicasted to many Observers.
-I would normally prefer BehaviorSubject instead of Subject.
+1) What are the differences between Subject, BehaviorSubject and ReplaySubject?  And in what situation would you use each of these (please provide example scenarios)?
 
-BehaviorSubject:
-It is a variant of Subject that requires an initial value and emits its current value whenever it is subscribed to.
-It is sometimes important to coding preference to not have a null value, as it is initialised with a value.
-For Example we want to show the total items added to your cart in a e-comerce website. You can use behaviorSubject with an initialised value of 0. If not we have do a null check in the Cart component.
-ReplaySubject:  it can cache up to a specified number of emissions. Any subscribers will get all the cached values upon subscription. I have never come across a use case that uses this. May be when we try to record a users last seen products in a e-comerce website we can use it.
+Answer : 	
+	Subject: It's like an event Emitters, It emits the value only after Subscription. Before Subscription it won't emit the value. In other words A subscriber will only get published values after the subscription is made.
+    BehaviourSubject: Requires initial Value and emits the latest value to the subscribers.
+    ReplaySubject: It emits the old value with specified number of times to the new subscribers and latest value to the previous subscribers. 
+
+Explanation : 
+SUBJECT
+
+    Suppose we have a chat application, and we need to store all the messages. 
+    Then we can use Subject to store the messages in our custom chatStore.
+
+    Example:
+
+        const subject = new Subject();
+        const initialState = {
+        data: [],
+        };
+
+        let state = initialState;
+        const chatStore = {
+        init: () => {
+            state = {...state },
+            subject.next(state)
+        },
+        subscribe: setState => subject.subscribe(setState),
+        sendMessage: message => {
+            state = {
+            ...state,
+            data: [...state.data, message],
+            };
+            subject.next(state);
+        }
+        };
+
+BEHAVIOURSUBJECT
+
+Consider a situation calculating the total amount and tax in invoice based web application. We can use behaviour subject to recalculate the tax and invoice amount. When new element added to invoice field we can use the combainLatest operator together to recalculate the tax and invoice amount. 
+
+Example: 
+
+offerDiscount$ = new BehaviorSubject("0");
+
+totalAmount$ =  combineLatest([
+   this.offerDiscount$,
+  ]).pipe(
+// some Operation 
+)
+
+Where ever we call the next() function the totalAmount$ is recalculated based on some logic we provide.
+
+
+REPLAYSUBJECT
+
+Consider the e-commerce website action which displays our recent search keywords and results. We can use the replay subject like this logic. 
+
+let subject = new ReplaySubject<string>(10);
+
+subject.next("First Search string");
+subject.next("Second Search string");
+subject.next("Third Search string");
+
+
+subject.asObservable().subscribe((data) => {
+console.log("Search Query"+ data);
+});
+
+subject.next(“Fourth search string”);
+
+Subject.asObservable().subscribe((data)=>{
+// Last 10 search string can be observed
+console.log("Search Query"+ data);
+})
